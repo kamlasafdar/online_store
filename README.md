@@ -5,7 +5,7 @@
 
 ```bash
 git clone https://github.com/kamlasafdar/mern-online-store.git
-cd mern-online-store
+cd online_store
 ```
 ### 2. Install dependencies
 ```bash
