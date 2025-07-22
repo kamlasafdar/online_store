@@ -5,7 +5,7 @@ import Home from './components/pages/Home.js';
 function App() {
   return (
     <div className="App">
-      <Login />
+      {/* <Login /> */}
       <Home></Home>
     </div>
   );
