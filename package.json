@@ -1,12 +1,17 @@
 {
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
   },
   "scripts": {
     "client": "npm start --prefix client",
     "server": "nodemon server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "lucide-react": "^0.525.0"
   }
 }
-
