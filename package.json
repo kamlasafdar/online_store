@@ -12,6 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
-    "lucide-react": "^0.525.0"
+    "lucide-react": "^0.525.0",
+    "react-router-dom": "^7.7.0"
   }
 }
