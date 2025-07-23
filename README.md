@@ -4,7 +4,7 @@
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/kamlasafdar/mern-online-store.git
+git clone https://github.com/kamlasafdar/online_store.git
 cd online_store
 ```
 ### 2. Install dependencies
