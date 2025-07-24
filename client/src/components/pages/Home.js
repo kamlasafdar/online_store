@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   // Simple hero slides
   const heroSlides = [
@@ -65,27 +70,13 @@ const Home = () => {
   };
 
   const handleContactUs = (product) => {
-    console.log(`Contact about: ${product.name}`);
-    // Navigate to contact page
+    navigate('/contact', { state: { product } });
   };
 
   return (
     <div className="home">
       {/* Navigation */}
-      <nav className="navbar">
-        <div className="nav-container">
-          <div className="logo">
-            <h2>Your Store</h2>
-          </div>
-          <ul className="nav-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/blog">Blog</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="hero">
@@ -104,7 +95,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="hero-dots">
           {heroSlides.map((_, index) => (
             <button
@@ -138,13 +129,13 @@ const Home = () => {
             {products.map((product) => (
               <div key={product.id} className="product-card">
                 <div className="product-image">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     onClick={() => handleProductClick(product)}
                   />
                   <div className="product-overlay">
-                    <button 
+                    <button
                       className="contact-btn"
                       onClick={() => handleContactUs(product)}
                     >
@@ -169,15 +160,15 @@ const Home = () => {
             <div className="about-text">
               <h2>About Our Store</h2>
               <p>
-                We provide high-quality products with excellent customer service. 
-                Our mission is to deliver the best shopping experience with 
+                We provide high-quality products with excellent customer service.
+                Our mission is to deliver the best shopping experience with
                 carefully selected items that meet your needs.
               </p>
               <button className="about-btn">Learn More</button>
             </div>
             <div className="about-image">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="About us"
               />
             </div>
@@ -219,33 +210,8 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h3>Your Store</h3>
-              <p>Quality products and excellent service</p>
-            </div>
-            <div className="footer-section">
-              <h3>Quick Links</h3>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/products">Products</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-              </ul>
-            </div>
-            <div className="footer-section">
-              <h3>Contact Info</h3>
-              <p>Email: info@yourstore.com</p>
-              <p>Phone: +92 300 1234567</p>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2024 Your Store. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+
     </div>
   );
 };
