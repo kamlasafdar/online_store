@@ -8,6 +8,7 @@ const LanguageSelector = () => {
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'ur', name: 'اردو', flag: '🇵🇰' },
+    { code: 'hi', name: 'हिंदी', flag: '🇮🇳' }
   ];
 
   const changeLanguage = (langCode) => {
@@ -39,14 +40,14 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-container">
         <div className="logo">
-          <h2>{t('storeName', 'Your Store')}</h2>
+          <h2>{t('storeName')}</h2>
         </div>
         <ul className="nav-menu">
-          <li><a href="/">{t('home', 'Home')}</a></li>
-          <li><a href="/products">{t('products', 'Products')}</a></li>
-          <li><a href="/about">{t('about', 'About Us')}</a></li>
-          <li><a href="/contact">{t('contact', 'Contact')}</a></li>
-          <li><a href="/blog">{t('blog', 'Blog')}</a></li>
+          <li><a href="/">{t('home')}</a></li>
+          <li><a href="/products">{t('products')}</a></li>
+          <li><a href="/about">{t('about')}</a></li>
+          <li><a href="/contact">{t('contact')}</a></li>
+          <li><a href="/blog">{t('blog')}</a></li>
         </ul>
         
         {/* Language Selector */}

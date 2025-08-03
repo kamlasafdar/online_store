@@ -13,6 +13,9 @@ const resources = {
   ur: {
     translation: urTranslation
   },
+  hi: {
+    translation: hiTranslation
+  }
 };
 
 i18n
@@ -21,6 +24,7 @@ i18n
     resources,
     lng: localStorage.getItem('language') || 'en', // default language
     fallbackLng: 'en',
+    debug: true, // Enable debug to see what's happening
     
     interpolation: {
       escapeValue: false
