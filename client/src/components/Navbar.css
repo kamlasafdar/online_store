@@ -17,7 +17,52 @@
   justify-content: space-between;
   align-items: center;
 }
+.language-selector {
+  margin-left: auto;
+  padding-left: 20px;
+}
 
+.language-dropdown {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-dropdown:hover {
+  border-color: #007bff;
+  background-color: #f8f9fa;
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.language-dropdown option {
+  padding: 5px;
+  background-color: white;
+  color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .language-selector {
+    margin-left: 0;
+    padding-left: 0;
+    order: -1; /* Show language selector at top on mobile */
+  }
+}
 .logo h2 {
   color: white;
   font-size: 1.8rem;

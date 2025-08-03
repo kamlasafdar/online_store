@@ -13,9 +13,6 @@ const resources = {
   ur: {
     translation: urTranslation
   },
-  hi: {
-    translation: hiTranslation
-  }
 };
 
 i18n
