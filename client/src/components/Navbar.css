@@ -17,50 +17,86 @@
   justify-content: space-between;
   align-items: center;
 }
-.language-selector {
-  margin-left: auto;
-  padding-left: 20px;
+/* Add these styles to your existing Navbar.css */
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Universal Language Selector */
+.universal-language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .language-dropdown {
-  background-color: transparent;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 5px 10px;
+  background-color: #fff;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 8px 12px;
   font-size: 14px;
   color: #333;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 150px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .language-dropdown:hover {
   border-color: #007bff;
-  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .language-dropdown:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-.language-dropdown option {
-  padding: 5px;
-  background-color: white;
-  color: #333;
+.loading-indicator {
+  font-size: 18px;
+  animation: spin 1s linear infinite;
 }
 
-/* Responsive design */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+.navbar.rtl .nav-container {
+  flex-direction: row-reverse;
+}
+
+.navbar.rtl .nav-menu {
+  flex-direction: row-reverse;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 10px;
+  .universal-language-selector {
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
   }
   
-  .language-selector {
-    margin-left: 0;
-    padding-left: 0;
-    order: -1; /* Show language selector at top on mobile */
+  .navbar.rtl .nav-container {
+    flex-direction: column;
   }
 }
 .logo h2 {
