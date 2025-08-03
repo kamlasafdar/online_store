@@ -3,11 +3,12 @@ import './Home.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
-
+import T, { useAutoTranslate } from '../Translatable';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
+  const { isRTL } = useAutoTranslate();
 
   // Simple hero slides
   const heroSlides = [
@@ -74,7 +75,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className={`home ${isRTL ? 'rtl' : 'ltr'}`}>
       {/* Navigation */}
       <Navbar />
 
@@ -88,9 +89,9 @@ const Home = () => {
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               <div className="hero-content">
-                <h1>{slide.title}</h1>
-                <p>{slide.subtitle}</p>
-                <button className="hero-btn">Explore Products</button>
+                <h1><T>{slide.title}</T></h1>
+                <p><T>{slide.subtitle}</T></p>
+                <button className="hero-btn"><T>Explore Products</T></button>
               </div>
             </div>
           ))}
@@ -110,11 +111,11 @@ const Home = () => {
       {/* Popular Searches */}
       <section className="popular-searches">
         <div className="container">
-          <h2>Popular Searches</h2>
+          <h2><T>Popular Searches</T></h2>
           <div className="search-tags">
             {popularSearches.map((search, index) => (
               <span key={index} className="tag">
-                {search}
+                <T>{search}</T>
               </span>
             ))}
           </div>
@@ -124,7 +125,7 @@ const Home = () => {
       {/* Featured Products */}
       <section className="products">
         <div className="container">
-          <h2>Featured Products</h2>
+          <h2><T>Featured Products</T></h2>
           <div className="products-grid">
             {products.map((product) => (
               <div key={product.id} className="product-card">
@@ -139,13 +140,13 @@ const Home = () => {
                       className="contact-btn"
                       onClick={() => handleContactUs(product)}
                     >
-                      Contact Us
+                      <T>Contact Us</T>
                     </button>
                   </div>
                 </div>
                 <div className="product-info">
-                  <h3>{product.name}</h3>
-                  <p>{product.category}</p>
+                  <h3><T>{product.name}</T></h3>
+                  <p><T>{product.category}</T></p>
                 </div>
               </div>
             ))}
@@ -158,13 +159,11 @@ const Home = () => {
         <div className="container">
           <div className="about-content">
             <div className="about-text">
-              <h2>About Our Store</h2>
+              <h2><T>About Our Store</T></h2>
               <p>
-                We provide high-quality products with excellent customer service.
-                Our mission is to deliver the best shopping experience with
-                carefully selected items that meet your needs.
+                <T>We provide high-quality products with excellent customer service. Our mission is to deliver the best shopping experience with carefully selected items that meet your needs.</T>
               </p>
-              <button className="about-btn">Learn More</button>
+              <button className="about-btn"><T>Learn More</T></button>
             </div>
             <div className="about-image">
               <img
@@ -179,22 +178,22 @@ const Home = () => {
       {/* Features */}
       <section className="features">
         <div className="container">
-          <h2>Why Choose Us</h2>
+          <h2><T>Why Choose Us</T></h2>
           <div className="features-grid">
             <div className="feature">
               <div className="feature-icon">⭐</div>
-              <h3>Quality Products</h3>
-              <p>Carefully selected high-quality items</p>
+              <h3><T>Quality Products</T></h3>
+              <p><T>Carefully selected high-quality items</T></p>
             </div>
             <div className="feature">
               <div className="feature-icon">🚀</div>
-              <h3>Fast Response</h3>
-              <p>Quick customer support and service</p>
+              <h3><T>Fast Response</T></h3>
+              <p><T>Quick customer support and service</T></p>
             </div>
             <div className="feature">
               <div className="feature-icon">💎</div>
-              <h3>Custom Solutions</h3>
-              <p>Tailored products for your needs</p>
+              <h3><T>Custom Solutions</T></h3>
+              <p><T>Tailored products for your needs</T></p>
             </div>
           </div>
         </div>
@@ -203,9 +202,9 @@ const Home = () => {
       {/* Contact CTA */}
       <section className="cta">
         <div className="container">
-          <h2>Ready to Get Started?</h2>
-          <p>Contact us today to discuss your requirements</p>
-          <button className="cta-btn">Get in Touch</button>
+          <h2><T>Ready to Get Started?</T></h2>
+          <p><T>Contact us today to discuss your requirements</T></p>
+          <button className="cta-btn"><T>Get in Touch</T></button>
         </div>
       </section>
 

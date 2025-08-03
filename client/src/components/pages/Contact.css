@@ -1,4 +1,13 @@
-/* Contact Page Styling */
+Contact Page Styling
+
+
+
+.form-box {
+  border: 2px solid #2D7D7B;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
 
 .contact-page {
   background-color: white;
@@ -9,22 +18,11 @@
   font-family: sans-serif;
 }
 
-
 .contact-page h2 {
   color: #2D7D7B;
   margin-bottom: 1.5rem;
   text-align: center;
 }
-
-/* Rectangle around form */
-.form-box {
-  border: 2px solid #2D7D7B;
-  padding: 2rem;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-/* Grid layout for form */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -59,6 +57,7 @@
   background-color: white;
   appearance: none;
 }
+
 
 /* Dropdown arrow styling */
 .form-group select {
