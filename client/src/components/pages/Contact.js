@@ -4,10 +4,32 @@ import { useLocation } from 'react-router-dom';
 import './Contact.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import { toast } from 'react-toastify';
+
 
 const Contact = () => {
     const { state } = useLocation();
     const product = state?.product;
+
+    const phoneLengthByCountry = {
+        '+92': { length: 10, hint: 'e.g. 3001234567' },
+        '+91': { length: 10, hint: 'e.g. 9123456789' },
+        '+1': { length: 10, hint: 'e.g. 4151234567' },
+        '+44': { length: 10, hint: 'e.g. 7123456789' },
+        '+971': { length: 9, hint: 'e.g. 501234567' },
+        '+61': { length: 9, hint: 'e.g. 412345678' },
+        '+81': { length: 10, hint: 'e.g. 9012345678' },
+        '+49': { length: 11, hint: 'e.g. 15123456789' },
+        '+33': { length: 9, hint: 'e.g. 612345678' },
+        '+966': { length: 9, hint: 'e.g. 501234567' },
+        '+880': { length: 10, hint: 'e.g. 1812345678' },
+        '+86': { length: 11, hint: 'e.g. 13123456789' },
+        '+234': { length: 10, hint: 'e.g. 8012345678' },
+        '+55': { length: 11, hint: 'e.g. 11912345678' },
+        '+20': { length: 10, hint: 'e.g. 1012345678' },
+        '+7': { length: 10, hint: 'e.g. 9123456789' },
+        '+34': { length: 9, hint: 'e.g. 612345678' },
+    };
 
 
     const [formData, setFormData] = useState({
@@ -29,11 +51,38 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', { ...formData, product });
-        alert('Order sent!');
+        const expectedLength = phoneLengthByCountry[formData.countryCode]?.length || 10;
+
+        if (formData.phone.length !== expectedLength) {
+            const hint = phoneLengthByCountry[formData.countryCode]?.hint || '';
+            toast.error(`Phone number is not valid. It should be ${expectedLength} digits. ${hint}`);
+            return;
+        }
+
+
+        try {
+            const response = await fetch('http://localhost:5000/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ formData, product }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                toast.success('Order sent successfully!');
+
+            } else {
+                toast.error('Something went wrong' + result.message);
+            }
+        } catch (error) {
+            toast.error('Something went wrong');
+        }
     };
+
 
     return (
         <>
@@ -77,16 +126,6 @@ const Contact = () => {
                                     />
                                 </div>
 
-                                {/* <div className="form-group">
-                                    <label>Phone Number</label>
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        required
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                    />
-                                </div> */}
                                 <div className="form-group">
                                     <label>Phone Number</label>
                                     <div className="phone-inline">
@@ -116,14 +155,25 @@ const Contact = () => {
 
                                         </select>
 
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            placeholder=""
-                                            required
-                                        />
+                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                placeholder=""
+                                                required
+                                            />
+
+                                            <p style={{ fontSize: '0.725rem', color: '#2D7D7B', marginTop: '4px' , fontWeight: 'bold'}}>
+                                                {
+                                                    phoneLengthByCountry[formData.countryCode]
+                                                        ? `Phone format: ${phoneLengthByCountry[formData.countryCode].hint}`
+                                                        : 'Phone format: e.g. 1234567890'
+                                                }
+                                            </p>
+                                        </div>
+
                                     </div>
                                 </div>
 

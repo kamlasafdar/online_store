@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Login from './components/pages/login.js';
 import Home from './components/pages/Home.js';
@@ -15,6 +17,7 @@ function App() {
           {/* You can add more routes here like login */}
         </Routes>
       </Router>
+      <ToastContainer position="top-right" autoClose={5000} />
     </div>
   );
 }
